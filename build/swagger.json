@@ -5,7 +5,35 @@
 		"parameters": {},
 		"requestBodies": {},
 		"responses": {},
-		"schemas": {},
+		"schemas": {
+			"AwsUploadBody": {
+				"properties": {
+					"bufferImage": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"bufferImage"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AwsMultipleUploadBody": {
+				"properties": {
+					"bufferImages": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"bufferImages"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
 		"securitySchemes": {
 			"api_key": {
 				"type": "apiKey",
@@ -36,7 +64,87 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
-		"/partners/test": {
+		"/aws": {
+			"post": {
+				"operationId": "UploadPicture",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GoogleApi"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AwsUploadBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/aws/multiple": {
+			"post": {
+				"operationId": "UploadPictures",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GoogleApi"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AwsMultipleUploadBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/applications": {
+			"get": {
+				"operationId": "GetApplications",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Applications"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/test": {
 			"post": {
 				"operationId": "Test",
 				"responses": {
@@ -52,7 +160,7 @@
 					}
 				},
 				"tags": [
-					"Partners"
+					"Test"
 				],
 				"security": [],
 				"parameters": [],
