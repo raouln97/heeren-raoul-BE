@@ -6,11 +6,10 @@
   "scripts": {
     "tsoa:swagger": "tsoa spec",
     "tsoa:routes": "tsoa routes",
-    "build": "npm run tsoa:routes && npm run tsoa:swagger && npm run tsc",
-    "dev": "npm run build && ts-node src/index.ts",
-    "start": "serve -s build",
-    "tsc": "tsc",
-    "postinstall": "tsc"
+    "build": "npm run tsoa:routes && npm run tsoa:swagger && tsc",
+    "start": "node build/index.js",
+    "dev": "ts-node src/index.ts",
+    "postinstall": "npm run build"
   },
   "author": "",
   "license": "ISC",
