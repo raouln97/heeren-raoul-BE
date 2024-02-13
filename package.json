@@ -32,6 +32,7 @@
     "otp-generator": "^4.0.1",
     "prettier": "^2.8.8",
     "reflect-metadata": "^0.1.13",
+    "serve": "^14.2.1",
     "ts-node": "^10.9.1",
     "tsoa": "^5.1.1",
     "typescript": "^5.1.3"
