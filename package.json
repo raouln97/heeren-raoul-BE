@@ -7,7 +7,7 @@
     "tsoa:swagger": "tsoa spec",
     "tsoa:routes": "tsoa routes",
     "build": "npm run tsoa:routes && npm run tsoa:swagger && tsc",
-    "start": "node build/index.js",
+    "start": "node dist/src/index.js",
     "dev": "ts-node src/index.ts",
     "postinstall": "npm run build"
   },
