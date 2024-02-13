@@ -12,20 +12,23 @@ import {
   Query,
   Delete,
   Header,
-} from "tsoa";
+} from 'tsoa';
+import { GenericFunctionsService } from './genericFunctions.service';
 // import { ApplicationReqDTO, StatusUpdateDTO } from "./application.dto";
 // import { ApplicationService } from "./application.service";
 
-@Tags("Applications")
-@Route("/applications")
+@Tags('Applications')
+@Route('/applications')
 export class GenericController extends Controller {
-  // private readonly applicationService: ApplicationService
+  private readonly genericFunctionsService: GenericFunctionsService;
 
   constructor() {
     super();
-    //   this.applicationService = new ApplicationService();
+    this.genericFunctionsService = new GenericFunctionsService();
   }
 
-  @Get("/")
-  public async getApplications(): Promise<any> {}
+  @Get('/{clueId}')
+  public async getClueData(@Path() clueId: number): Promise<any> {
+    return this.genericFunctionsService.getClueData(clueId);
+  }
 }

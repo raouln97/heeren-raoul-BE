@@ -1,11 +1,12 @@
-import axios from "axios";
-import AWS from "aws-sdk";
-import { AwsMultipleUploadBody } from "./google.dto";
+import axios from 'axios';
+import AWS from 'aws-sdk';
+import { AwsMultipleUploadBody } from './google.dto';
+import { config } from '../config';
 
 AWS.config.update({
-  region: "ap-southeast-1", // e.g., us-west-2
-  accessKeyId: "AKIA4GYF4MJKAXHFXQYA",
-  secretAccessKey: "49WZhTfNFmlW0jbYlSKtuaMTfOaauk6EJc8RdlPQ",
+  region: config.aws.region, // e.g., us-west-2
+  accessKeyId: config.aws.accessKeyId,
+  secretAccessKey: config.aws.secretAccessKey,
 });
 
 export class AwsService {
@@ -14,7 +15,7 @@ export class AwsService {
     if (match) {
       const mimeType = match[1];
       const base64EncodedData = match[2];
-      const dataBuffer = Buffer.from(base64EncodedData, "base64");
+      const dataBuffer = Buffer.from(base64EncodedData, 'base64');
 
       const params = {
         Bucket: bucketName,
@@ -36,7 +37,7 @@ export class AwsService {
       // Now you can use `dataBuffer` for operations like uploading to AWS S3
       // Make sure to pass `mimeType` along with `dataBuffer` to AWS S3 upload function to ensure correct content-type
     } else {
-      console.error("Invalid or unsupported data URI");
+      console.error('Invalid or unsupported data URI');
     }
   }
 

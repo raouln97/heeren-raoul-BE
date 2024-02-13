@@ -124,9 +124,9 @@
 				}
 			}
 		},
-		"/applications": {
+		"/applications/{clueId}": {
 			"get": {
-				"operationId": "GetApplications",
+				"operationId": "GetClueData",
 				"responses": {
 					"200": {
 						"description": "Ok",
@@ -141,7 +141,17 @@
 					"Applications"
 				],
 				"security": [],
-				"parameters": []
+				"parameters": [
+					{
+						"in": "path",
+						"name": "clueId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
 			}
 		},
 		"/test": {

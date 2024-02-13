@@ -89,12 +89,13 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        app.get('/applications',
+        app.get('/applications/:clueId',
             ...(fetchMiddlewares<RequestHandler>(GenericController)),
-            ...(fetchMiddlewares<RequestHandler>(GenericController.prototype.getApplications)),
+            ...(fetchMiddlewares<RequestHandler>(GenericController.prototype.getClueData)),
 
-            function GenericController_getApplications(request: any, response: any, next: any) {
+            function GenericController_getClueData(request: any, response: any, next: any) {
             const args = {
+                    clueId: {"in":"path","name":"clueId","required":true,"dataType":"double"},
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -106,7 +107,7 @@ export function RegisterRoutes(app: Router) {
                 const controller = new GenericController();
 
 
-              const promise = controller.getApplications.apply(controller, validatedArgs as any);
+              const promise = controller.getClueData.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);
