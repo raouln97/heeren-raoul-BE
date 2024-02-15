@@ -25,6 +25,16 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "bufferImages": {"dataType":"array","array":{"dataType":"string"},"required":true},
+            "clueAnswer": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "checkAnswerDTO": {
+        "dataType": "refObject",
+        "properties": {
+            "answer": {"dataType":"string","required":true},
+            "clueId": {"dataType":"double","required":true},
         },
         "additionalProperties": false,
     },
@@ -108,6 +118,31 @@ export function RegisterRoutes(app: Router) {
 
 
               const promise = controller.getClueData.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/applications/answer',
+            ...(fetchMiddlewares<RequestHandler>(GenericController)),
+            ...(fetchMiddlewares<RequestHandler>(GenericController.prototype.checkAnswer)),
+
+            function GenericController_checkAnswer(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"checkAnswerDTO"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new GenericController();
+
+
+              const promise = controller.checkAnswer.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);

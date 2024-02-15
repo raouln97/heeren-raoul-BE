@@ -14,6 +14,7 @@ import {
   Header,
 } from 'tsoa';
 import { GenericFunctionsService } from './genericFunctions.service';
+import { checkAnswerDTO } from './genericFunctions.dto';
 // import { ApplicationReqDTO, StatusUpdateDTO } from "./application.dto";
 // import { ApplicationService } from "./application.service";
 
@@ -30,5 +31,10 @@ export class GenericController extends Controller {
   @Get('/{clueId}')
   public async getClueData(@Path() clueId: number): Promise<any> {
     return this.genericFunctionsService.getClueData(clueId);
+  }
+
+  @Post('/answer')
+  public async checkAnswer(@Body() body: checkAnswerDTO): Promise<any> {
+    return this.genericFunctionsService.checkAnswer(body);
   }
 }

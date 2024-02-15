@@ -25,10 +25,31 @@
 							"type": "string"
 						},
 						"type": "array"
+					},
+					"clueAnswer": {
+						"type": "string"
 					}
 				},
 				"required": [
-					"bufferImages"
+					"bufferImages",
+					"clueAnswer"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"checkAnswerDTO": {
+				"properties": {
+					"answer": {
+						"type": "string"
+					},
+					"clueId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"answer",
+					"clueId"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -152,6 +173,36 @@
 						}
 					}
 				]
+			}
+		},
+		"/applications/answer": {
+			"post": {
+				"operationId": "CheckAnswer",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Applications"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/checkAnswerDTO"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/test": {

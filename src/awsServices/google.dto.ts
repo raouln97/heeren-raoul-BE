@@ -4,4 +4,5 @@ export interface AwsUploadBody {
 
 export interface AwsMultipleUploadBody {
   bufferImages: string[];
+  clueAnswer: string;
 }

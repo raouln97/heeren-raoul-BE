@@ -1,7 +1,7 @@
 export const clueData = [
   {
     clue: "In a realm where time weaves tales both old and new, Find the guardian that watched our story's debut. In a land where skyscrapers reach and boats gently sway, Where a fairy tale from afar finds its modern-day play. By the river, where the water's stories unfold, Seek the place where German tales are told.",
-    answer: 'hans im glück',
+    answer: 'hans im gluck',
   },
   {
     clue: "In a land where tales are told beneath the urban glow, Find the bridge from past to future, where the quiet waters flow. At the spot where German legends meet the Lion City's streets, Seek the next path in our story, where memory and present meets.From the forest's edge, to a hill where history sleeps, Trace our steps under the stars, where time silently creeps. At the end of our wandering, a revelation under the night sky, Where a moment of honesty, beneath the stars, did lie.Where is this place, where truths were softly spoken, Under the canopy of stars, where past and future are woven",
