@@ -51,4 +51,97 @@ export class AwsService {
 
     return Promise.all(uploadPromises);
   }
+
+  async getAllFiles(bucketName: string) {
+    const s3 = new AWS.S3();
+
+    const params = {
+      Bucket: bucketName,
+    };
+
+    const arrOfUrls = [];
+    const data = await s3.listObjects(params).promise();
+
+    data.Contents.map(imageData => {
+      console.log('Key here:', imageData.Key);
+      arrOfUrls.push(`https://${bucketName}.s3.amazonaws.com/${imageData.Key}`);
+    });
+
+    console.log(arrOfUrls);
+
+    return arrOfUrls;
+  }
+
+  // async getSongUrl() {
+  //   const clientID = config.spotify.clientId;
+  //   const clientSecret = config.spotify.clientSecret;
+  //   const encoded = btoa(`${clientID}:${clientSecret}`);
+
+  //   const accessTokenData = await axios.post(
+  //     'https://accounts.spotify.com/api/token',
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         Authorization: `Basic ${encoded}`,
+  //         'Content-Type': 'application/x-www-form-urlencoded',
+  //       },
+  //       body: 'grant_type=client_credentials',
+  //     }
+  //   );
+  //   const { access_token } = accessTokenData.data;
+  //   console.log(access_token);
+
+  //   const response = await axios.get(
+  //     `https://api.spotify.com/v1/tracks/0FDzzruyVECATHXKHFs9eJ?si=RsCj-iWaQsC79zWwZPlKAA`,
+  //     {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: `Bearer ${access_token}`,
+  //       },
+  //     }
+  //   );
+  //   const data = await response.json();
+  //   console.log(data.external_urls.spotify);
+  //   return data;
+  // }
+
+  // async getSongUrl() {
+  //   const clientID = config.spotify.clientId;
+  //   const clientSecret = config.spotify.clientSecret;
+  //   const encoded = Buffer.from(`${clientID}:${clientSecret}`).toString(
+  //     'base64'
+  //   );
+
+  //   try {
+  //     const accessTokenResponse = await axios.post(
+  //       'https://accounts.spotify.com/api/token',
+  //       'grant_type=client_credentials', // The data body needs to be a URL-encoded string
+  //       {
+  //         headers: {
+  //           Authorization: `Basic ${encoded}`,
+  //           'Content-Type': 'application/x-www-form-urlencoded', // Ensures the body is treated as URL-encoded form data
+  //         },
+  //       }
+  //     );
+
+  //     const { access_token } = accessTokenResponse.data;
+  //     console.log(access_token);
+
+  //     // Now, use the access token to call the Spotify Web API for track details
+  //     const response = await axios.get(
+  //       `https://api.spotify.com/v1/tracks/0FDzzruyVECATHXKHFs9eJ`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${access_token}`,
+  //         },
+  //       }
+  //     );
+
+  //     console.log(response.data.external_urls.spotify); // Log the Spotify URL of the track
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error('Error fetching data from Spotify:', error);
+  //     throw error; // Rethrow or handle error appropriately
+  //   }
+  // }
 }

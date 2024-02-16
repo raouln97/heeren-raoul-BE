@@ -12,13 +12,13 @@ import {
   Query,
   Delete,
   Header,
-} from "tsoa";
-import { AwsService } from "./awsServices.service";
-import { AwsMultipleUploadBody, AwsUploadBody } from "./google.dto";
+} from 'tsoa';
+import { AwsService } from './awsServices.service';
+import { AwsMultipleUploadBody, AwsUploadBody } from './google.dto';
 // import { ApplicationReqDTO, StatusUpdateDTO } from "./application.dto";
 
-@Tags("GoogleApi")
-@Route("/aws")
+@Tags('GoogleApi')
+@Route('/aws')
 export class AwsController extends Controller {
   private readonly awsService: AwsService;
 
@@ -27,19 +27,29 @@ export class AwsController extends Controller {
     this.awsService = new AwsService();
   }
 
-  @Post("/")
+  @Post('/')
   public async uploadPicture(@Body() body: AwsUploadBody): Promise<any> {
     return await this.awsService.uploadFileToS3(
-      "heeren-raoul",
+      'heeren-raoul',
       body.bufferImage,
-      "test2"
+      'test2'
     );
   }
 
-  @Post("/multiple")
+  @Post('/multiple')
   public async uploadPictures(
     @Body() body: AwsMultipleUploadBody
   ): Promise<any> {
-    return await this.awsService.uploadMultipleFilesToS3("heeren-raoul", body);
+    return await this.awsService.uploadMultipleFilesToS3('heeren-raoul', body);
+  }
+
+  @Get('/all')
+  public async getAllFiles(): Promise<any> {
+    return await this.awsService.getAllFiles('heeren-raoul');
+  }
+
+  @Get('/song')
+  public async getSong(): Promise<any> {
+    return await this.awsService.getAllFiles('heeren-raoul-spotify');
   }
 }

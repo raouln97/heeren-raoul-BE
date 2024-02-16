@@ -145,6 +145,46 @@
 				}
 			}
 		},
+		"/aws/all": {
+			"get": {
+				"operationId": "GetAllFiles",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GoogleApi"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/aws/song": {
+			"get": {
+				"operationId": "GetSong",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"GoogleApi"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
 		"/applications/{clueId}": {
 			"get": {
 				"operationId": "GetClueData",
