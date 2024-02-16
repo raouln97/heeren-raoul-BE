@@ -46,7 +46,11 @@ export class AwsService {
     files: AwsMultipleUploadBody
   ) {
     const uploadPromises = files.bufferImages.map((file, index) =>
-      this.uploadFileToS3(bucketName, file, `${files.clueAnswer} - ${index}`)
+      this.uploadFileToS3(
+        bucketName,
+        file,
+        `${files.clueAnswer} - ${index} - ${Date.now()}`
+      )
     );
 
     return Promise.all(uploadPromises);

@@ -23,4 +23,8 @@ export const clueData = [
     clue: 'Where modern minds meet and ideas take flight, In a hub of innovation, bathed in city light. At Suntec City, where dreams are woven tight, Find the place where our ambitions would unite.Seek the spot where coffee aromas blend with thoughts so bright, Near the haven of collaboration, out of plain sight. There, a clue lies hidden, a piece of our shared story, In a nook where we once dreamed, lies the next chapter of this allegory.',
     answer: 'Suntec WeWork',
   },
+  {
+    clue: 'A photon is going through airport security. The TSA agent asks if he has any luggage. The photon says, “No, I’m traveling ...',
+    answer: 'Light',
+  },
 ];
