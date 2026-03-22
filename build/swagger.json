@@ -45,6 +45,9 @@
 					"clueId": {
 						"type": "number",
 						"format": "double"
+					},
+					"type": {
+						"type": "string"
 					}
 				},
 				"required": [
@@ -185,7 +188,7 @@
 				"parameters": []
 			}
 		},
-		"/applications/{clueId}": {
+		"/applications": {
 			"get": {
 				"operationId": "GetClueData",
 				"responses": {
@@ -204,12 +207,20 @@
 				"security": [],
 				"parameters": [
 					{
-						"in": "path",
-						"name": "clueId",
+						"in": "query",
+						"name": "id",
 						"required": true,
 						"schema": {
 							"format": "double",
 							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "type",
+						"required": false,
+						"schema": {
+							"type": "string"
 						}
 					}
 				]

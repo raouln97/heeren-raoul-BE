@@ -28,9 +28,18 @@ export class GenericController extends Controller {
     this.genericFunctionsService = new GenericFunctionsService();
   }
 
-  @Get('/{clueId}')
-  public async getClueData(@Path() clueId: number): Promise<any> {
-    return this.genericFunctionsService.getClueData(clueId);
+  // @Get('/')
+  // public async test(): Promise<any> {
+  //   return 'ok';
+  // }
+
+  @Get('/')
+  public async getClueData(
+    @Query() id: number,
+    @Query() type?: string
+  ): Promise<any> {
+    const clueId = id;
+    return this.genericFunctionsService.getClueData(clueId, type);
   }
 
   @Post('/answer')

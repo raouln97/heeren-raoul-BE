@@ -1,9 +1,16 @@
-import { clueData } from './clue';
+import { clueData, anniGameClueData, anniversaryClues } from './clue';
 import { checkAnswerDTO } from './genericFunctions.dto';
 
 export class GenericFunctionsService {
-  async getClueData(clueId: number) {
-    const data = clueData[clueId - 1];
+  async getClueData(clueId: number, type?: string) {
+    let data: { answer: string; clue: string };
+    if (type === 'anniGame') {
+      data = anniGameClueData[clueId - 1];
+    } else if (type === 'anniClue') {
+      data = anniversaryClues[clueId - 1];
+    } else {
+      data = clueData[clueId - 1];
+    }
     const answer = data.answer.replace(/\s+/g, '');
 
     console.log(answer);
@@ -12,8 +19,15 @@ export class GenericFunctionsService {
   }
 
   async checkAnswer(body: checkAnswerDTO) {
-    const { answer, clueId } = body;
-    const data = clueData[clueId - 1];
+    const { answer, clueId, type } = body;
+    let data: { answer: string; clue: string };
+    if (type === 'anniGame') {
+      data = anniGameClueData[clueId - 1];
+    } else if (type === 'anniClue') {
+      data = anniversaryClues[clueId - 1];
+    } else {
+      data = clueData[clueId - 1];
+    }
 
     const formattedClueAnswer = data.answer.replace(/\s+/g, '');
 
